@@ -7,8 +7,9 @@ import ContactList from "./components/ContactList";
 
 const App = () => {
   const [contacts, setContacts] = useState(
-    () => JSON.parse(window.localStorage.getItem("contacts")) ?? ""
+    () => JSON.parse(window.localStorage.getItem("contacts")) ?? []
   );
+
   const [filter, setFilter] = useState("");
 
   useEffect(
@@ -25,7 +26,7 @@ const App = () => {
     const currentContacts = contacts.map((contact) => contact.name);
 
     if (currentContacts.includes(newContacts.name)) {
-      alert(`${newContacts.name} is alredy in contacts!`);
+      alert(`${newContacts.name} is already in contacts!`);
     } else {
       setContacts((prevState) => [...prevState, newContacts]);
     }
